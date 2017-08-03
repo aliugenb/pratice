@@ -19,16 +19,25 @@
                     <li class="active"><a herf="#">发布会</a></li>
                     <li><a href="/guest_manage/">嘉宾</a> </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">a
                     <li><a href="#">{{ user }}</a> </li>
                     <li><a href="/logot/">退出</a> </li>
                 </ul>
             </div>
         </div>
     </nav>
-
+    <!--发布会搜索表单-->
+    <div class="page-header" style="padding-top: 20px;">
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="navbar-form" method="get" action="/search_event/">
+                <div class="form-group">
+                    <input name="name" type="text" placeholder="名称" class="form-control">
+                </div>
+            </form>
+        </div>
+    </div>
     <!--发布会列表-->
-    <div class="row" style="padding-top: 80px;">
+    <div class="row" style="padding-top: 0px;">
         <div class="col-md-6">
             <table class="table table-striped">
                 <thead>
