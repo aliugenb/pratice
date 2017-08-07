@@ -1,9 +1,10 @@
+import logging
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from sign.models import Event, Guest
-import logging
 
 
 # Create your views here.
@@ -33,6 +34,7 @@ def login_action(request):
 def event_manage(request):
     username = request.session.get('user', '')
     event_list = Event.objects.all()
+
     # username = request.COOKIES.get('user', '')  # get cookies
     return render(request, 'event_manage.html', {'user': username, 'events':event_list})
 
@@ -49,7 +51,15 @@ def search_event(request):
 def guest_manage(request):
     username = request.session.get('user', '')
     guest_list = Guest.objects.all()
-    return render(request, 'guest_manage.html', {'user': username, 'guests': guest_list})
+    paginator = Paginator(guest_list, 2)
+    page = request.GET.get('page')
+    try:
+        contacts = paginator.page(page)
+    except PageNotAnInteger:
+        contacts = paginator.page(1)
+    except EmptyPage:
+        contacts = paginator.page(paginator.num_pages)
+    return render(request, 'guest_manage.html', {'user': username, 'guests': contacts})
 
 
 @login_required
