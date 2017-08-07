@@ -3,6 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from sign.models import Event, Guest
+import logging
 
 
 # Create your views here.
@@ -39,8 +40,8 @@ def event_manage(request):
 @login_required
 def search_event(request):
     username = request.session.get('user', '')
-    search_name = request.GET.get('name', '')
-    event_list = Event.objects.filter(name_contains=search_name)
+    search_name = request.GET.get("name", "")
+    event_list = Event.objects.filter(name__contains=search_name)
     return render(request, 'event_manage.html', {'user': username, 'events': event_list})
 
 
@@ -54,6 +55,6 @@ def guest_manage(request):
 @login_required
 def search_guest(request):
     username = request.session.get('user', '')
-    search_name = request.GET.get('name', '')
-    guest_list = Guest.objects.filter(name_contains=search_name)
+    search_name = request.GET.get("name", '')
+    guest_list = Guest.objects.filter(name__contains=search_name)
     return render(request, 'guest_manage.html', {'user': username, 'guests': guest_list})
