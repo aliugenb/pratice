@@ -34,8 +34,6 @@ def login_action(request):
 def event_manage(request):
     username = request.session.get('user', '')
     event_list = Event.objects.all()
-
-    # username = request.COOKIES.get('user', '')  # get cookies
     return render(request, 'event_manage.html', {'user': username, 'events':event_list})
 
 
