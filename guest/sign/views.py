@@ -64,5 +64,5 @@ def guest_manage(request):
 def search_guest(request):
     username = request.session.get('user', '')
     search_name = request.GET.get("name", '')
-    guest_list = Guest.objects.filter(name__contains=search_name)
+    guest_list = Guest.objects.filter(realname__contains=search_name)
     return render(request, 'guest_manage.html', {'user': username, 'guests': guest_list})
