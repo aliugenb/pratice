@@ -18,7 +18,7 @@ class AddEventTest(unittest.TestCase):
 
     def test_add_event_all_null(self):
         ''' 所有参数为空 '''
-        payload = {'eid':'','':'','limit':'','address':"",'start_time':''}
+        payload = {'eid': '', '': '', 'limit': '', 'address': "", 'start_time': ''}
         r = requests.post(self.base_url, data=payload)
         self.result = r.json()
         self.assertEqual(self.result['status'], 10021)
@@ -26,7 +26,7 @@ class AddEventTest(unittest.TestCase):
 
     def test_add_event_eid_exist(self):
         ''' id已经存在 '''
-        payload = {'eid':1,'name':'一加4发布会','limit':2000,'address':"深圳宝体",'start_time':'2017'}
+        payload = {'eid': 1, 'name': '一加4发布会', 'status': 0, 'limit': 2000, 'address': "深圳宝体", 'start_time': '2017'}
         r = requests.post(self.base_url, data=payload)
         self.result = r.json()
         self.assertEqual(self.result['status'], 10022)

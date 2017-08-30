@@ -24,6 +24,7 @@ datas = {
     ],
 }
 
+
 # Inster table datas
 def init_data():
     DB().init_data(datas)
