@@ -51,33 +51,33 @@ class UserSignTest(unittest.TestCase):
         ''' phone=10100001111 手机号不存在 '''
         payload = {'eid':1,'phone':10100001111}
         r = requests.post(self.base_url,data=payload)
-        # self.result = r.json()
-        # self.assertEqual(self.result['status'], 10025)
-        # self.assertEqual(self.result['message'], 'user phone null')
-    #
-    # def test_user_sign_eid_phone_error(self):
-    #     '''eid=1, phone=13511001102 手机号与发布会不匹配 '''
-    #     payload = {'eid':1,'phone':13511001102}
-    #     r = requests.post(self.base_url,data=payload)
-    #     self.result = r.json()
-    #     self.assertEqual(self.result['status'], 10026)
-    #     self.assertEqual(self.result['message'], 'user did not participate in the conference')
-    #
-    # def test_user_sign_has_sign_in(self):
-    #     ''' 已签到 '''
-    #     payload = {'eid':1,'phone':13511001101}
-    #     r = requests.post(self.base_url,data=payload)
-    #     self.result = r.json()
-    #     self.assertEqual(self.result['status'], 10027)
-    #     self.assertEqual(self.result['message'], 'user has sign in')
-    #
-    # def test_user_sign_success(self):
-    #     ''' 签到成功 '''
-    #     payload = {'eid':1,'phone':13511001100}
-    #     r = requests.post(self.base_url,data=payload)
-    #     self.result = r.json()
-    #     self.assertEqual(self.result['status'], 200)
-    #     self.assertEqual(self.result['message'], 'sign success')
+        self.result = r.json()
+        self.assertEqual(self.result['status'], 10025)
+        self.assertEqual(self.result['message'], 'user phone null')
+
+    def test_user_sign_eid_phone_error(self):
+        '''eid=1, phone=13511001102 手机号与发布会不匹配 '''
+        payload = {'eid':1,'phone':13511001102}
+        r = requests.post(self.base_url,data=payload)
+        self.result = r.json()
+        self.assertEqual(self.result['status'], 10026)
+        self.assertEqual(self.result['message'], 'user did not participate in the conference')
+
+    def test_user_sign_has_sign_in(self):
+        ''' 已签到 '''
+        payload = {'eid':1,'phone':13511001101}
+        r = requests.post(self.base_url,data=payload)
+        self.result = r.json()
+        self.assertEqual(self.result['status'], 10027)
+        self.assertEqual(self.result['message'], 'user has sign in')
+
+    def test_user_sign_success(self):
+        ''' 签到成功 '''
+        payload = {'eid':1,'phone':13511001100}
+        r = requests.post(self.base_url,data=payload)
+        self.result = r.json()
+        self.assertEqual(self.result['status'], 200)
+        self.assertEqual(self.result['message'], 'sign success')
 
 
 if __name__ == '__main__':
