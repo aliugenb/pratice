@@ -1,12 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
------------------------------
- File Name：  views_if_sec
- Description :
- Author :  liuye
- date：   2017/9/5
- ----------------------------
-"""
 from django.http import JsonResponse
 from sign.models import Event, Guest
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
